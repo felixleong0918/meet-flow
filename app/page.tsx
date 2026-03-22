@@ -271,6 +271,16 @@ export default function MeetFlow() {
                 </DialogContent>
               </Dialog>
             </div>
+            {/*Pending Attendees */}
+            {members.filter((m) => m.availability.length === 0).length > 0 && (
+              <div className="mb-4 p-3 rounded-lg border bg-yellow-50 text-yellow-800 text-sm">
+                尚未填寫時間：
+                {members
+                  .filter((m) => m.availability.length === 0)
+                  .map((m) => m.name)
+                  .join("、")}
+              </div>
+            )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {members.map((m) => (
